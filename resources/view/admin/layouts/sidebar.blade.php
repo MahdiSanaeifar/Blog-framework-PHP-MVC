@@ -18,15 +18,15 @@
 
                 <li class=" navigation-header"><span>لینک ها</span></li>
 
-                <li class=" nav-item <?= sidebarActive(route('admin.index'), false) ?>"><a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
+                <li class=" nav-item <?= isActive(route('admin.index'), false) ?>"><a href="<?= route('admin.index') ?>"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">خانه</span></a></li>
 
-                <li class=" nav-item <?= sidebarActive(route('admin.category.index')) ?> "><a href="<?= route('admin.category.index') ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
+                <li class=" nav-item <?= isActive(route('admin.category.index')) ?>"><a href="<?= route('admin.category.index') ?>"><i class="feather icon-message-square"></i><span class="menu-title" data-i18n="Chat">دسته بندی</span></a></li>
 
-                <li class=" nav-item <?= sidebarActive(route('admin.post.index')) ?>"><a href="<?= route('admin.post.index') ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">اخبار</span></a></li>
+                <li class=" nav-item <?= isActive(route('admin.post.index')) ?>"><a href="<?= route('admin.post.index') ?>"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">اخبار</span></a></li>
 
-                <li class=" nav-item <?= sidebarActive(route("admin.comment.index")) ?>"><a href="<?= route("admin.comment.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
+                <li class=" nav-item <?= isActive(route("admin.comment.index")) ?>"><a href="<?= route("admin.comment.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">نظرات</span></a></li>
                 
-                <li class=" nav-item <?= sidebarActive(route("admin.user.index")) ?>"><a href="<?= route("admin.user.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
+                <li class=" nav-item <?= isActive(route("admin.user.index")) ?>"><a href="<?= route("admin.user.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
 
             </ul>
         </div>

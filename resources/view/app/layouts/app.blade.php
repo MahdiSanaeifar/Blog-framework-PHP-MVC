@@ -6,7 +6,7 @@
     @yield('head-tag')
 </head>
 
-<body>
+<body id="wrapper" class="wrapper">
 
     <!-- Preloader Start Here -->
     <!-- <div id="preloader">

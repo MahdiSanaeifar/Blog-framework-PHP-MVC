@@ -1122,15 +1122,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <div class="ne-banner-layout1 mb-50 mt-20-r text-center">
-                        <a href="#">
-                            <img src="img/banner/banner2.jpg" alt="ad" class="img-fluid">
-                        </a>
-                    </div>
-                </div>
-            </div>
+
             <div class="ne-isotope">
                 <div class="row">
                     <div class="col-12">

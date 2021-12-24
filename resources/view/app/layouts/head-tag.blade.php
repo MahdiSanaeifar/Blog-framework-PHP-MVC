@@ -4,7 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="<?=asset('img/favicon.png')?>">
 <!-- Normalize CSS -->
 <link rel="stylesheet" href="<?= asset('css/normalize.css') ?>">
 <!-- Main CSS -->
@@ -29,4 +29,4 @@
 <!-- For IE -->
 <link rel="stylesheet" type="text/css" href="<?= asset('css/ie-only.css') ?>">
 <!-- Modernizr Js -->
-<script src="<?= asset('js/modernizr-2.8.3.min.js') ?>"></script>
+<script src="<?= asset('js/modernizr-2.8.3.min.js')?>"></script>

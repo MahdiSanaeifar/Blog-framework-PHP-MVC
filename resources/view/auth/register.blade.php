@@ -43,12 +43,8 @@
                                 <div class="card-body pt-0">
                                     <form action="" method="post" enctype="multipart/form-data">
                                         <div class="form-label-group">
-                                            <input type="text" name="first_name" id="first_name" class="form-control" placeholder="نام" required>
-                                            <label for="first_name">نام</label>
-                                        </div>
-                                        <div class="form-label-group">
-                                            <input type="text" name="last_name" id="last_name" class="form-control" placeholder="نام خانوادگی" required>
-                                            <label for="last_name">نام خانوادگی</label>
+                                            <input type="text" name="username" id="username" class="form-control" placeholder="نام" required>
+                                            <label for="username">نام</label>
                                         </div>
                                         <div class="form-label-group">
                                             <input type="email" name="email" id="email" class="form-control" placeholder="ایمیل" required>
