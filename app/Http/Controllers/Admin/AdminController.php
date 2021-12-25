@@ -16,7 +16,6 @@ class AdminController extends Controller
          * if you want to login with ID use this code :
          *  => Auth::loginById(1);
          */
-        Auth::loginById(1);
         Auth::check();
         if (Auth::user()->user_type != 'admin') {
             redirect('/login');
