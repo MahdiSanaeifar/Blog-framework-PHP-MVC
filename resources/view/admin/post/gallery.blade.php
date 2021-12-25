@@ -19,13 +19,13 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">آگهی - گالری</h4>
-                                    <span><a href="<?= route('admin.ads.index') ?>" class="btn btn-success">بازگشت</a></span>
+                                    <h4 class="card-title">اخبار - گالری (<?= $post->title ?>)</h4>
+                                    <span><a href="<?= route('admin.post.index') ?>" class="btn btn-success">بازگشت</a></span>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body card-dashboard">
 
-                                        <form class="row" action="<?= route('admin.ads.store.gallery.image', [$advertise->id]) ?>" method="post" enctype="multipart/form-data">
+                                        <form class="row" action="<?= route('admin.post.store.gallery.image', [$post->id]) ?>" method="post" enctype="multipart/form-data">
 
                                             <div class="col-md-6">
                                                 <fieldset class="form-group">
