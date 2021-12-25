@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
-use App\Http\Requests\Admin\PostRequest;
-use App\Http\Services\ImageUpload;
 use App\Post;
+use App\Gallery;
+use App\Category;
 use System\Auth\Auth;
+use App\Http\Services\ImageUpload;
+use App\Http\Requests\Admin\PostRequest;
+use App\Http\Requests\Admin\GalleryRequest;
 
 class PostController extends AdminController
 {
@@ -85,4 +87,37 @@ class PostController extends AdminController
         return back();
     }
 
+    /**
+     * Show the form for creating, deleting a new resource.
+     */
+    public function gallery($id)
+    {
+        $post = Post::find($id);
+        $galleries = Gallery::where('post_id', $id)->get();
+        return view("admin.post.gallery", compact('post', 'galleries'));
+    }
+
+    /**
+     * Store a newly created resource in database.
+     */
+    public function storeGalleryImage($id)
+    {
+        $request = new GalleryRequest();
+        $inputs = [];
+        $inputs['post_id'] = $id;
+        $path = 'images/gallery/' . date('Y/M/d');
+        $name = date('Y_m_d_H_i_s_') . rand(10, 99);
+        $inputs['image'] = ImageUpload::UploadAndFitImage($request->file('image'), $path, $name, 730, 400);
+        Gallery::create($inputs);
+        return back();
+    }
+
+    /**
+     * Remove the specified resource from database.
+     */
+    public function deleteGalleryImage($gallery_id)
+    {
+        Gallery::delete($gallery_id);
+        return back();
+    }
 }
