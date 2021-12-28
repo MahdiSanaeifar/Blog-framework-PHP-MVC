@@ -1,102 +1,366 @@
 @extends('app.layouts.app')
 
 @section('head-tag')
-<title>دسته بندی</title>
+    <title>دسته بندی</title>
 @endsection
 
 @section('content')
 
-<div class="hero-wrap" style="background-image: url('<?=asset('images/bg_1.jpg')?>');">
-    <div class="overlay"></div>
-    <div class="container">
-      <div class="row no-gutters slider-text align-items-center justify-content-center">
-        <div class="col-md-9 ftco-animate text-center">
-          <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html"></a></span><span> جستجو</span></p>
-          <h1 class="mb-3 bread">جستجو </h1>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="main-container container pt-40" id="main-container">
 
-  <section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <span class="subheading">آگهی</span>
-                <h2 class="mb-4"><?=$_GET['search']?></h2>
-            </div>
-        </div>
-    </div>
-    <div class="container-fluid">
+        <!-- Content -->
         <div class="row">
-            <?php foreach ($ads as $advertise) {?>
-            <div class="col-md-3 ftco-animate">
-                <div class="properties">
-                    <a href="<?=route('home.ads', [$advertise->id])?>" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('<?=asset($advertise->image)?>');">
-                        <div class="icon d-flex justify-content-center align-items-center">
-                            <span class="icon-search2"></span>
-                        </div>
-                    </a>
-                    <div class="text p-3">
-                        <span class="status sale">خرید</span>
-                        <div class="d-flex">
-                            <div class="one">
-                                <h3><a href="<?=route('home.ads', [$advertise->id])?>"><?=$advertise->title?></a></h3>
-                                <p>ویلایی</p>
-                            </div>
-                            <div class="two">
-                                <span class="price"><?=$advertise->amount?></span>
-                            </div>
-                        </div>
-                        <p><?=substr(html_entity_decode($advertise->description), 0, 40)?></p>
-                        <hr>
-                        <p class="bottom-area d-flex">
-                            <span><i class="flaticon-selection mx-1"></i><?=$advertise->area?></span>
-                            <span class="ml-auto"><i class="flaticon-bathtub"></i><?=$advertise->room?></span>
-                            <span><i class="flaticon-bed"></i><?=$advertise->toilet?></span>
-                        </p>
+
+            <!-- Posts -->
+            <div class="col-lg-8 blog__content mb-72">
+                <h1 class="page-title">نتایج جستجو برای: تکنولوژی</h1>
+
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-8.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-8.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">موبایل
+                            و گجت</a>
                     </div>
-                </div>
-            </div>
-            <?php }?>
 
-        </div>
-    </div>
-</section>
-
-
-<section class="ftco-section bg-light">
-    <div class="container">
-        <div class="row justify-content-center mb-5 pb-3">
-            <div class="col-md-7 heading-section text-center ftco-animate">
-                <span class="subheading">بلاگ</span>
-                <h2><?=$_GET['search']?></h2>
-            </div>
-        </div>
-        <div class="row d-flex">
-            <?php foreach ($posts as $post) {?>
-            <div class="col-md-3 d-flex ftco-animate">
-                <div class="blog-entry align-self-stretch">
-                    <a href="<?=route('home.post', [$post->id])?>" class="block-20" style="background-image: url('<?=asset($post->image)?>');">
-                    </a>
-                    <div class="text mt-3 d-block">
-                        <h3 class="heading mt-3"><a href="<?=route('home.post', [$post->id])?>"><?=$post->title?></a></h3>
-                        <div class="meta mb-3">
-                        <div>
-                            <a href="#"><?=formatDate($post->created_at, '%B %d، %Y')?></a></div>
-                            <div><a href="#"><?=$post->user()->first_name . ' ' . $post->user()->last_name?></a></div>
-                            <div><a href="#" class="meta-chat"><span class="icon-chat"></span> ۳</a></div>
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>عد از اعلام تصمیم سامسونگ برای به عقب انداختن عرضه گلکسی فولد، شایعاتی مبنی بر احتمال تاخیر
+                                در عرضه ...</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            <?php }?>
-            </div>
-        </div>
-    </div>
-</section>
+                </article>
 
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-2-2.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-2-2.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">موبایل
+                            و گجت</a>
+                    </div>
 
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>مدیرعامل شرکت وان پلاس، آقای Pete Lau، اخیرا با وب‌سایت ورج مصاحبه داشته و برخی شایعاتی که
+                                درباره وا ...</p>
+                        </div>
+                    </div>
+                </article>
 
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-9.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-9.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--orange">کتاب
+                            و ادبیات</a>
+                    </div>
+
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">بهترین کتاب‌های کودک و نوجوان برای تربیت فرزندان موفق</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>انتخاب کتاب مناسب برای فرزندان کار دشواری است. دوستی دارم که تعریف می‌کند در بچگی با پدر و
+                                مادرش به ...</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-5-2.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-5-2.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">کتاب
+                            و ادبیات</a>
+                    </div>
+
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">۵ کتاب روانشناسی که برای زندگی بهتر باید بخوانید </a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>این روزها مشکلات زندگی مدرن باعث شده که مردم بیش از پیش به نیازهای روانی خودشان توجه کنند.
+                                مشکلات حا ...</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-8.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-8.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--blue">موبایل
+                            و گجت</a>
+                    </div>
+
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>عد از اعلام تصمیم سامسونگ برای به عقب انداختن عرضه گلکسی فولد، شایعاتی مبنی بر احتمال تاخیر
+                                در عرضه ...</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="entry card post-list">
+                    <div class="entry__img-holder post-list__img-holder card__img-holder"
+                        style="background-image: url(img/content/thumb/post-2-2.jpg)">
+                        <a href="single-post.html" class="thumb-url"></a>
+                        <img src="img/content/thumb/post-2-2.jpg" alt="" class="entry__img d-none">
+                        <a href="categories.html"
+                            class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--purple">موبایل
+                            و گجت</a>
+                    </div>
+
+                    <div class="entry__body post-list__body card__body">
+                        <div class="entry__header">
+                            <h2 class="entry__title">
+                                <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
+                            </h2>
+                            <ul class="entry__meta">
+                                <li class="entry__meta-author">
+                                    <span>نویسنده:</span>
+                                    <a href="#">بهرامی راد</a>
+                                </li>
+                                <li class="entry__meta-date">
+                                    ۴ اردیبهشت ۱۳۹۸
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="entry__excerpt">
+                            <p>مدیرعامل شرکت وان پلاس، آقای Pete Lau، اخیرا با وب‌سایت ورج مصاحبه داشته و برخی شایعاتی که
+                                درباره وا ...</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Pagination -->
+                <nav class="pagination">
+                    <span class="pagination__page pagination__page--current">۱</span>
+                    <a href="#" class="pagination__page">۲</a>
+                    <a href="#" class="pagination__page">۳</a>
+                    <a href="#" class="pagination__page">۴</a>
+                    <a href="#" class="pagination__page pagination__icon pagination__page--next"><i
+                            class="ui-arrow-left"></i></a>
+                </nav>
+            </div> <!-- end posts -->
+
+            <!-- Sidebar -->
+            <aside class="col-lg-4 sidebar sidebar--right">
+
+                <!-- Widget Popular Posts -->
+                <aside class="widget widget-popular-posts">
+                    <h4 class="widget-title">محبوب ترین مقالات</h4>
+                    <ul class="post-list-small">
+                        <li class="post-list-small__item">
+                            <article class="post-list-small__entry clearfix">
+                                <div class="post-list-small__img-holder">
+                                    <div class="thumb-container thumb-100">
+                                        <a href="single-post.html">
+                                            <img data-src="img/content/thumb/post-8.jpg" src="img/empty.png" alt=""
+                                                class="post-list-small__img--rounded lazyload">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-list-small__body">
+                                    <h3 class="post-list-small__entry-title">
+                                        <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                                    </h3>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#">بهرامی راد</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            ۴ اردیبهشت ۱۳۹۸
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="post-list-small__item">
+                            <article class="post-list-small__entry clearfix">
+                                <div class="post-list-small__img-holder">
+                                    <div class="thumb-container thumb-100">
+                                        <a href="single-post.html">
+                                            <img data-src="img/content/thumb/post-2.jpg" src="img/empty.png" alt=""
+                                                class="post-list-small__img--rounded lazyload">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-list-small__body">
+                                    <h3 class="post-list-small__entry-title">
+                                        <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
+                                    </h3>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#">بهرامی راد</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            ۴ اردیبهشت ۱۳۹۸
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="post-list-small__item">
+                            <article class="post-list-small__entry clearfix">
+                                <div class="post-list-small__img-holder">
+                                    <div class="thumb-container thumb-100">
+                                        <a href="single-post.html">
+                                            <img data-src="img/content/thumb/post-6.jpg" src="img/empty.png" alt=""
+                                                class="post-list-small__img--rounded lazyload">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-list-small__body">
+                                    <h3 class="post-list-small__entry-title">
+                                        <a href="single-post.html">چرا لانچرهای اندروید دیگر محبوبیت گذشته را ندارند؟</a>
+                                    </h3>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#">بهرامی راد</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            ۴ اردیبهشت ۱۳۹۸
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+                        <li class="post-list-small__item">
+                            <article class="post-list-small__entry clearfix">
+                                <div class="post-list-small__img-holder">
+                                    <div class="thumb-container thumb-100">
+                                        <a href="single-post.html">
+                                            <img data-src="img/content/thumb/post-5.jpg" src="img/empty.png" alt=""
+                                                class="post-list-small__img--rounded lazyload">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-list-small__body">
+                                    <h3 class="post-list-small__entry-title">
+                                        <a href="single-post.html">۵ کتاب روانشناسی که برای زندگی بهتر باید بخوانید</a>
+                                    </h3>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#">بهرامی راد</a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            ۴ اردیبهشت ۱۳۹۸
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+                    </ul>
+                </aside> <!-- end widget popular posts -->
+
+                <!-- Widget Newsletter -->
+                <aside class="widget widget_mc4wp_form_widget">
+                    <h4 class="widget-title">خبرنامه</h4>
+                    <p class="newsletter__text">
+                        <i class="ui-email newsletter__icon"></i>
+                        برای اطلاع از آخرین خبرها مشترک شوید
+                    </p>
+                    <form class="mc4wp-form" method="post">
+                        <div class="mc4wp-form-fields">
+                            <div class="form-group">
+                                <input type="email" name="EMAIL" placeholder="ایمیل" required="">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" class="btn btn-lg btn-color" value="عضویت">
+                            </div>
+                        </div>
+                    </form>
+                </aside> <!-- end widget newsletter -->
+
+                <!-- Widget Ad 300 -->
+                <aside class="widget widget_media_image">
+                    <a href="#">
+                        <img src="img/content/mag-1.jpg" alt="">
+                    </a>
+                </aside> <!-- end widget ad 300 -->
+
+            </aside> <!-- end sidebar -->
+
+        </div> <!-- end content -->
+    </div> <!-- end main container -->
 
 @endsection
