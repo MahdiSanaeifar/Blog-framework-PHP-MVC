@@ -37,6 +37,7 @@
                                  <td><?= $post->user()->username ?></td>
                                  <td><img style="width: 90px;" src="<?= asset($post->image ) ?>" alt=""></td>
                                  <td style="min-width: 16rem; text-align: left;">
+                                    <a href="<?= route('admin.post.gallery', ['id' => $post->id]) ?>" class="btn btn-warning">گالری</a>
                                     <a href="<?= route('admin.post.edit', ['id' => $post->id]) ?>" class="btn btn-info">ویرایش</a>
                                     <form class="d-inline" action="<?= route('admin.post.delete', ['id' => $post->id]) ?>" method="post">
                                        <input type="hidden" name="_method" value="delete">
