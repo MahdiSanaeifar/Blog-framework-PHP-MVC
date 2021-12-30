@@ -28,6 +28,10 @@
                 
                 <li class=" nav-item <?= isActive(route("admin.user.index")) ?>"><a href="<?= route("admin.user.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">کاربران</span></a></li>
 
+                <li class=" nav-item <?= isActive(route("admin.subscriber.index")) ?>"><a href="<?= route("admin.subscriber.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">دنبال کنندگان</span></a></li>
+
+                <li class=" nav-item <?= isActive(route("admin.widget.index")) ?>"><a href="<?= route("admin.widget.index") ?>"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">ویجت ها</span></a></li>
+
             </ul>
         </div>
     </div>
