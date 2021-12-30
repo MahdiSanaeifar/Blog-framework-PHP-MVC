@@ -1,11 +1,8 @@
 @extends('admin.layouts.app')
 
-
-
 @section('head-tag')
 <title>Admin / Post</title>
 @endsection
-
 
 
 @section('content')
