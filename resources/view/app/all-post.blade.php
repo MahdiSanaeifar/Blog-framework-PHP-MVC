@@ -1,43 +1,152 @@
 @extends('app.layouts.app')
 
-@section('title')
-<title>پست ها</title>
+@section('head-tag')
+    <title>تمامی اخبار</title>
 @endsection
 
 @section('content')
 
-<div class="hero-wrap" style="background-image: url('<?= asset('images/bg_1.jpg') ?>');">
-    <div class="overlay"></div>
+    <!-- Breadcrumbs -->
     <div class="container">
-      <div class="row no-gutters slider-text align-items-center justify-content-center">
-        <div class="col-md-9 ftco-animate text-center">
-          <p class="breadcrumbs"><span class="mr-2"><a href="index.html">خانه</a></span> <span>بلاگ</span></p>
-          <h1 class="mb-3 bread">بلاگ ها</h1>
-        </div>
-      </div>
+        <ul class="breadcrumbs">
+            <li class="breadcrumbs__item">
+                <a href="<?=route('home.index')?>" class="breadcrumbs__url">خانه</a>
+            </li>
+            <li class="breadcrumbs__item">
+                <a href="<?=route('home.index')?>" class="breadcrumbs__url">اخبار</a>
+            </li>
+            <li class="breadcrumbs__item breadcrumbs__item--current">
+                تمامی اخبار
+            </li>
+        </ul>
     </div>
-  </div>
 
-  <section class="ftco-section bg-light">
-      <div class="container">
-          <div class="row d-flex">
-              <?php foreach (paginate($posts, 6) as $post) { ?>
-        <div class="col-md-3 d-flex ftco-animate">
-            <div class="blog-entry align-self-stretch">
-                      <a href="<?= route('home.post', [$post->id]) ?>" class="block-20" style="background-image: url('<?= asset($post->image) ?>');">
-                      </a>
-                      <div class="text mt-3 d-block">
-                          <h3 class="heading mt-3"><a href="<?= route('home.post', [$post->id]) ?>"><?= $post->title ?></a></h3>
-                          <div class="meta mb-3">
-                              <div><a href="#"><?= formatDate($post->created_at,'%B %d، %Y') ?></a></div>
-                              <div><a href="#"><?= $post->user()->first_name . ' ' . $post->user()->last_name ?></a></div>
-                          </div>
-                      </div>
-                  </div>
-        </div>
-        <?php } ?>
-      </div>
-      <?= paginateView($posts, 6) ?>
-  </section>
+
+    <div class="main-container container" id="main-container">
+
+        <!-- Content -->
+        <div class="row">
+
+            <!-- Posts -->
+            <div class="col-lg-8 blog__content mb-72">
+                <h1 class="page-title">تمامی اخبار</h1>
+
+                <div class="row card-row">
+
+                    <?php foreach ($posts as $post) {?>
+                    <div class="col-md-6">
+                        <article class="entry card">
+                            <div class="entry__img-holder card__img-holder">
+                                <a href="<?=route('home.post', [$post->id])?>">
+                                    <div class="thumb-container thumb-70">
+                                        <img data-src="<?=asset($post->image)?>"
+                                            src="<?=asset($post->image)?>" class="entry__img lazyload" alt="" />
+                                    </div>
+                                </a>
+                                <a href="#"
+                                    class="entry__meta-category entry__meta-category--label entry__meta-category--align-in-corner entry__meta-category--violet">
+                                    <?=$post->category()->name?>
+                                </a>
+                            </div>
+
+                            <div class="entry__body card__body">
+                                <div class="entry__header">
+
+                                    <h2 class="entry__title">
+                                        <a href="<?=route('home.post', [$post->id])?>"><?=$post->title?></a>
+                                    </h2>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#"><?=$post->user()->username?></a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <?=toPersianNum(formatDate($post->published_at, '%A, %d %B %Y'))?>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="entry__excerpt">
+                                    <p style="text-align: justify"><?=str_limit($post->summary, 150)?></p>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                    <?php }?>
+                </div>
+
+                <!-- Pagination -->
+                <?=paginateView($postCount, 6)?>
+
+            </div> <!-- end posts -->
+
+            <!-- Sidebar -->
+            <aside class="col-lg-4 sidebar sidebar--right">
+
+                <!-- Widget Popular Posts -->
+                <aside class="widget widget-popular-posts">
+                    <h4 class="widget-title">محبوب ترین مقالات</h4>
+                    <ul class="post-list-small">
+                        <?php foreach ($mostPopularPost as $post) { ?>
+                        <li class="post-list-small__item">
+                            <article class="post-list-small__entry clearfix">
+                                <div class="post-list-small__img-holder">
+                                    <div class="thumb-container thumb-100">
+                                        <a href="<?= route('home.post', [$post->id]) ?>">
+                                            <img data-src="<?=asset($post->image)?>" src="<?=asset($post->image)?>" alt=""
+                                                class="post-list-small__img--rounded lazyload">
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="post-list-small__body">
+                                    <h3 class="post-list-small__entry-title">
+                                        <a href="<?= route('home.post', [$post->id]) ?>"><?=str_limit($post->title,60)?></a>
+                                    </h3>
+                                    <ul class="entry__meta">
+                                        <li class="entry__meta-author">
+                                            <span>نویسنده:</span>
+                                            <a href="#"><?= $post->user()->username ?></a>
+                                        </li>
+                                        <li class="entry__meta-date">
+                                            <?= toPersianNum(formatDate($post->published_at, '%A, %d %B %Y')) ?>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </article>
+                        </li>
+                        <?php } ?>
+                    </ul>
+                </aside> <!-- end widget popular posts -->
+
+                <!-- Widget Newsletter -->
+                <aside class="widget widget_mc4wp_form_widget">
+                    <h4 class="widget-title">خبرنامه</h4>
+                    <p class="newsletter__text">
+                        <i class="ui-email newsletter__icon"></i>
+                        برای اطلاع از آخرین خبرها مشترک شوید
+                    </p>
+                    <form class="mc4wp-form" action="<?=route('home.subscriber')?>" method="POST">
+                            <div class="mc4wp-form-fields">
+                                <div class="form-group">
+                                    <input type="email" name="email" placeholder="ایمیل" required="">
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-lg btn-color" value="عضویت">
+                                </div>
+                            </div>
+                    </form>
+                </aside> <!-- end widget newsletter -->
+
+                <!-- Widget Ad 300 -->
+                <aside class="widget widget_media_image">
+                    <a href="#">
+                        <img src="<?=asset('img/content/mag-1.jpg')?>" alt="">
+                    </a>
+                </aside> <!-- end widget ad 300 -->
+
+            </aside> <!-- end sidebar -->
+
+        </div> <!-- end content -->
+    </div> <!-- end main container -->
+
       
 @endsection
