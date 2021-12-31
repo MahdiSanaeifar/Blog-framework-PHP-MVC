@@ -58,110 +58,34 @@
                 <aside class="widget widget-popular-posts">
                     <h4 class="widget-title">محبوب ترین مقالات</h4>
                     <ul class="post-list-small">
+                        <?php foreach ($mostPopularPost as $post) { ?>
                         <li class="post-list-small__item">
                             <article class="post-list-small__entry clearfix">
                                 <div class="post-list-small__img-holder">
                                     <div class="thumb-container thumb-100">
-                                        <a href="single-post.html">
-                                            <img data-src="img/content/thumb/post-8.jpg" src="img/empty.png" alt=""
+                                        <a href="<?= route('home.post', [$post->id]) ?>">
+                                            <img data-src="<?=asset($post->image)?>" src="<?=asset($post->image)?>" alt=""
                                                 class="post-list-small__img--rounded lazyload">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="post-list-small__body">
                                     <h3 class="post-list-small__entry-title">
-                                        <a href="single-post.html">گوشی تاشو هواوی میت ایکس در تاریخ مقرر عرضه می‌شود</a>
+                                        <a href="<?= route('home.post', [$post->id]) ?>"><?=str_limit($post->title,60)?></a>
                                     </h3>
                                     <ul class="entry__meta">
                                         <li class="entry__meta-author">
                                             <span>نویسنده:</span>
-                                            <a href="#">بهرامی راد</a>
+                                            <a href="#"><?= $post->user()->username ?></a>
                                         </li>
                                         <li class="entry__meta-date">
-                                            ۴ اردیبهشت ۱۳۹۸
+                                            <?= toPersianNum(formatDate($post->published_at, '%A, %d %B %Y')) ?>
                                         </li>
                                     </ul>
                                 </div>
                             </article>
                         </li>
-                        <li class="post-list-small__item">
-                            <article class="post-list-small__entry clearfix">
-                                <div class="post-list-small__img-holder">
-                                    <div class="thumb-container thumb-100">
-                                        <a href="single-post.html">
-                                            <img data-src="img/content/thumb/post-2.jpg" src="img/empty.png" alt=""
-                                                class="post-list-small__img--rounded lazyload">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-list-small__body">
-                                    <h3 class="post-list-small__entry-title">
-                                        <a href="single-post.html">نمایشگر وان پلاس ۷ قرار است ما را شگفت‌زده کند!</a>
-                                    </h3>
-                                    <ul class="entry__meta">
-                                        <li class="entry__meta-author">
-                                            <span>نویسنده:</span>
-                                            <a href="#">بهرامی راد</a>
-                                        </li>
-                                        <li class="entry__meta-date">
-                                            ۴ اردیبهشت ۱۳۹۸
-                                        </li>
-                                    </ul>
-                                </div>
-                            </article>
-                        </li>
-                        <li class="post-list-small__item">
-                            <article class="post-list-small__entry clearfix">
-                                <div class="post-list-small__img-holder">
-                                    <div class="thumb-container thumb-100">
-                                        <a href="single-post.html">
-                                            <img data-src="img/content/thumb/post-6.jpg" src="img/empty.png" alt=""
-                                                class="post-list-small__img--rounded lazyload">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-list-small__body">
-                                    <h3 class="post-list-small__entry-title">
-                                        <a href="single-post.html">چرا لانچرهای اندروید دیگر محبوبیت گذشته را ندارند؟</a>
-                                    </h3>
-                                    <ul class="entry__meta">
-                                        <li class="entry__meta-author">
-                                            <span>نویسنده:</span>
-                                            <a href="#">بهرامی راد</a>
-                                        </li>
-                                        <li class="entry__meta-date">
-                                            ۴ اردیبهشت ۱۳۹۸
-                                        </li>
-                                    </ul>
-                                </div>
-                            </article>
-                        </li>
-                        <li class="post-list-small__item">
-                            <article class="post-list-small__entry clearfix">
-                                <div class="post-list-small__img-holder">
-                                    <div class="thumb-container thumb-100">
-                                        <a href="single-post.html">
-                                            <img data-src="img/content/thumb/post-5.jpg" src="img/empty.png" alt=""
-                                                class="post-list-small__img--rounded lazyload">
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="post-list-small__body">
-                                    <h3 class="post-list-small__entry-title">
-                                        <a href="single-post.html">۵ کتاب روانشناسی که برای زندگی بهتر باید بخوانید</a>
-                                    </h3>
-                                    <ul class="entry__meta">
-                                        <li class="entry__meta-author">
-                                            <span>نویسنده:</span>
-                                            <a href="#">بهرامی راد</a>
-                                        </li>
-                                        <li class="entry__meta-date">
-                                            ۴ اردیبهشت ۱۳۹۸
-                                        </li>
-                                    </ul>
-                                </div>
-                            </article>
-                        </li>
+                        <?php } ?>
                     </ul>
                 </aside> <!-- end widget popular posts -->
 
@@ -172,10 +96,10 @@
                         <i class="ui-email newsletter__icon"></i>
                         برای اطلاع از آخرین خبرها مشترک شوید
                     </p>
-                    <form class="mc4wp-form" method="post">
+                    <form class="mc4wp-form" action="<?= route('home.subscriber') ?>" method="POST">
                         <div class="mc4wp-form-fields">
                             <div class="form-group">
-                                <input type="email" name="EMAIL" placeholder="ایمیل" required="">
+                                <input type="email" name="email" placeholder="ایمیل" required="">
                             </div>
                             <div class="form-group">
                                 <input type="submit" class="btn btn-lg btn-color" value="عضویت">
