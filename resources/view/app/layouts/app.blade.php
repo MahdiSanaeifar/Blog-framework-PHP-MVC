@@ -1,26 +1,28 @@
 <!DOCTYPE html>
-<html class="no-js" lang="fa">
+<html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="">
+
     @include('app.layouts.head-tag')
     @yield('head-tag')
 </head>
 
-<body id="wrapper" class="wrapper">
+<body class="bg-light style-default style-rounded">
 
-    <!-- Preloader Start Here -->
-    <!-- <div id="preloader">
-        <div class="text-center middle">
-            <div class="lds-ellipsis">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
+    <!-- Preloader -->
+    <div class="loader-mask">
+        <div class="loader">
+            <div></div>
         </div>
-    </div> -->
-    <!-- Preloader End Here -->
+    </div>
 
+    <!-- Bg Overlay -->
+    <div class="content-overlay"></div>
+    
     @include('app.layouts.navbar')
 
     @yield('content')
