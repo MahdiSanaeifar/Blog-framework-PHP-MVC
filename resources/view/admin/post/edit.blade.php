@@ -2,6 +2,7 @@
 
 @section('head-tag')
 <title>Admin / Post</title>
+<link href="<?= asset('css/select2.min.css') ?>" rel="stylesheet" />
 @endsection
 
 
@@ -107,7 +108,11 @@
 
 @section('script')
     <script src="<?= asset('ckeditor/ckeditor.js'); ?>"></script>
+    <script src="<?= asset('js/select2.min.js') ?>"></script>
+
     <script type="text/javascript">
         CKEDITOR.replace( 'body' );
+        $('.select2').select2();
+
     </script>
 @endsection
