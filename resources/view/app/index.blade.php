@@ -733,7 +733,7 @@
                     <h4 class="widget-title">دسته بندی نوشته ها</h4>
                     <ul>
                         <?php foreach ($categories as $category) {?>
-                        <li><a href="<?=route('home.category',[$category->id])?>"><?=$category->name?> <span class="categories-count">۱</span></a></li>
+                        <li><a href="<?=route('home.category',[$category->id])?>"><?=$category->name?></a></li>
                         <?php }?>
                     </ul>
                 </aside> <!-- end widget categories -->
