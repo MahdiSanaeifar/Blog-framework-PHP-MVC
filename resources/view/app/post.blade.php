@@ -1,7 +1,10 @@
 @extends('app.layouts.app')
 
 @section('head-tag')
-    <title><?=$post->title?></title>
+    <title><?= $post->title ?></title>
+
+    <link rel="stylesheet" href="<?=asset('swiper/swiper-bundle.min.css')?>" />
+    <script src="<?=asset('swiper/swiper-bundle.min.js')?>"></script>
 @endsection
 
 @section('content')
@@ -10,13 +13,13 @@
     <div class="container">
         <ul class="breadcrumbs">
             <li class="breadcrumbs__item">
-                <a href="<?=route('home.index')?>" class="breadcrumbs__url">خانه</a>
+                <a href="<?= route('home.index') ?>" class="breadcrumbs__url">خانه</a>
             </li>
             <li class="breadcrumbs__item">
-                <a href="<?=route('home.category',[$post->category()->id])?>" class="breadcrumbs__url">اخبار</a>
+                <a href="<?= route('home.category', [$post->category()->id]) ?>" class="breadcrumbs__url">اخبار</a>
             </li>
             <li class="breadcrumbs__item breadcrumbs__item--current">
-            <?=$post->category()->name?>
+                <?= $post->category()->name ?>
             </li>
         </ul>
     </div>
@@ -34,31 +37,31 @@
                     <article class="entry mb-0">
 
                         <div class="single-post__entry-header entry__header">
-                            <a href="<?=route('home.category',[$post->category()->id])?>"
-                                class="entry__meta-category entry__meta-category--label entry__meta-category--green"><?=$post->category()->name?></a>
+                            <a href="<?= route('home.category', [$post->category()->id]) ?>"
+                                class="entry__meta-category entry__meta-category--label entry__meta-category--green"><?= $post->category()->name ?></a>
                             <h1 class="single-post__entry-title">
-                                <?=$post->title?>
+                                <?= $post->title ?>
                             </h1>
 
                             <div class="entry__meta-holder">
                                 <ul class="entry__meta">
                                     <li class="entry__meta-author">
                                         <span>نویسنده:</span>
-                                        <a href="#"><?=$post->user()->username?></a>
+                                        <a href="#"><?= $post->user()->username ?></a>
                                     </li>
                                     <li class="entry__meta-date">
-                                        <?=toPersianNum(formatDate($post->published_at, '%A, %d %B %Y'))?>
+                                        <?= toPersianNum(formatDate($post->published_at, '%A, %d %B %Y')) ?>
                                     </li>
                                 </ul>
 
                                 <ul class="entry__meta">
                                     <li class="entry__meta-views">
                                         <i class="ui-eye"></i>
-                                        <span><?=toPersianNum($post->views)?></span>
+                                        <span><?= toPersianNum($post->views) ?></span>
                                     </li>
                                     <li class="entry__meta-comments">
                                         <a href="#">
-                                            <i class="ui-chat-empty"></i><?=toPersianNum(count($comments))?>
+                                            <i class="ui-chat-empty"></i><?= toPersianNum(count($comments)) ?>
                                         </a>
                                     </li>
                                 </ul>
@@ -66,7 +69,7 @@
                         </div> <!-- end entry header -->
 
                         <div class="entry__img-holder">
-                            <img src="<?=asset($post->image)?>" alt="" class="entry__img">
+                            <img src="<?= asset($post->image) ?>" alt="" class="entry__img">
                         </div>
 
                         <div class="entry__article-wrap">
@@ -97,7 +100,30 @@
 
                             <div class="entry__article">
 
-                                <p><?=html_entity_decode($post->body)?></p>
+                                <p><?= html_entity_decode($post->body) ?></p>
+
+                                <?php $galleries = $post->galleries()->get(); 
+                                if(!empty($galleries)){
+                                ?>
+                                
+                                <div class="swiper">
+                                    <!-- Additional required wrapper -->
+                                    <div class="swiper-wrapper">
+                                        <!-- Slides -->
+                                        <?php foreach($galleries as $gallery) { ?> 
+                                        <img src="<?= asset($gallery->image) ?>" alt="" class="entry__img swiper-slide">
+                                        <?php } ?>
+                                    </div>
+
+                                    <!-- If we need navigation buttons -->
+                                    <div class="swiper-pagination"></div>
+
+                                    <!-- If we need navigation buttons -->
+                                    <div class="swiper-button-prev"></div>
+                                    <div class="swiper-button-next"></div>
+                                </div>
+                                <!-- Slider main container -->
+                                <?php } ?>
 
                                 <!-- tags -->
                                 <div class="entry__tags">
@@ -112,16 +138,18 @@
 
                         <!-- Author -->
                         <div class="entry-author clearfix">
-                            <img alt="" data-src="<?=asset($post->user()->avatar)?>" src="img/empty.png" class="avatar lazyload">
+                            <img alt="" data-src="<?= asset($post->user()->avatar) ?>" src="img/empty.png"
+                                class="avatar lazyload">
                             <div class="entry-author__info">
                                 <h6 class="entry-author__name">
-                                    <a href="#"><?=$post->user()->username?></a>
+                                    <a href="#"><?= $post->user()->username ?></a>
                                 </h6>
                                 <p class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
                                     استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
                                     لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
                                     کاربردی می باشد.</p>
                             </div>
+
                         </div>
 
                         <!-- Related Posts -->
@@ -135,14 +163,15 @@
                                 <?php foreach ($posts as $relatedPost) {?>
                                 <article class="entry thumb thumb--size-1">
                                     <div class="entry__img-holder thumb__img-holder"
-                                        style="background-image: url('<?=asset($relatedPost->image)?>');">
+                                        style="background-image: url('<?= asset($relatedPost->image) ?>');">
                                         <div class="bottom-gradient"></div>
                                         <div class="thumb-text-holder">
                                             <h2 class="thumb-entry-title">
-                                                <a href="<?=route('home.post', [$relatedPost->id])?>"><?=$relatedPost->title?></a>
+                                                <a
+                                                    href="<?= route('home.post', [$relatedPost->id]) ?>"><?= $relatedPost->title ?></a>
                                             </h2>
                                         </div>
-                                        <a href="<?=route('home.post', [$relatedPost->id])?>" class="thumb-url"></a>
+                                        <a href="<?= route('home.post', [$relatedPost->id]) ?>" class="thumb-url"></a>
                                     </div>
                                 </article>
                                 <?php }?>
@@ -155,55 +184,57 @@
                     <!-- Comments -->
                     <div class="entry-comments">
                         <div class="title-wrap title-wrap--line">
-                            <h3 class="section-title"><?=toPersianNum(count($comments))?> دیدگاه</h3>
+                            <h3 class="section-title"><?= toPersianNum(count($comments)) ?> دیدگاه</h3>
                         </div>
                         <ul class="comment-list">
-                            <?php foreach($comments as $comment) { ?>
-                                <li class="comment">
+                            <?php foreach ($comments as $comment) {?>
+                            <li class="comment">
                                 <div class="comment-body">
                                     <div class="comment-avatar">
-                                        <img alt="" src="<?=asset($comment->user()->avatar)?>">
+                                        <img alt="" src="<?= asset($comment->user()->avatar) ?>">
                                     </div>
                                     <div class="comment-text">
-                                        <h6 class="comment-author"><?=$comment->user()->username?></h6>
+                                        <h6 class="comment-author"><?= $comment->user()->username ?></h6>
                                         <div class="comment-metadata">
-                                            <a href="#" class="comment-date"><?=toPersianNum(formatDate($comment->created_at, '%A, %d %B %Y'))?></a>
+                                            <a href="#"
+                                                class="comment-date"><?= toPersianNum(formatDate($comment->created_at, '%A, %d %B %Y')) ?></a>
                                         </div>
-                                        <p><?=$comment->comment?></p>
+                                        <p><?= $comment->comment ?></p>
                                         <!-- <a href="#" class="comment-reply">پاسخ</a> -->
                                     </div>
                                 </div>
-                            <?php 
-                            $childComments = $comment->child()->get();
-                            if(!empty($childComments)) { 
-                            ?>
+                                <?php
+$childComments = $comment->child()->get();
+    if (!empty($childComments)) {
+        ?>
                                 <ul class="children">
-                                <?php foreach($childComments as $childComment) { ?>
+                                    <?php foreach ($childComments as $childComment) {?>
                                     <li class="comment">
                                         <div class="comment-body px-5">
                                             <div class="comment-avatar">
-                                                <img alt="" src="<?=asset($childComment->user()->avatar)?>">
+                                                <img alt="" src="<?= asset($childComment->user()->avatar) ?>">
                                             </div>
                                             <div class="comment-text">
-                                                <h6 class="comment-author"><?=$childComment->user()->username?></h6>
+                                                <h6 class="comment-author"><?= $childComment->user()->username ?></h6>
                                                 <div class="comment-metadata">
-                                                    <a href="#" class="comment-date"><?=toPersianNum(formatDate($childComment->created_at, '%A, %d %B %Y'))?></a>
+                                                    <a href="#"
+                                                        class="comment-date"><?= toPersianNum(formatDate($childComment->created_at, '%A, %d %B %Y')) ?></a>
                                                 </div>
-                                                <p><?=$childComment->comment?></p>
+                                                <p><?= $childComment->comment ?></p>
                                             </div>
                                         </div>
                                     </li> <!-- end reply comment -->
-                                <?php } ?>
+                                    <?php }?>
                                 </ul>
-                            <?php } ?>
+                                <?php }?>
                             </li> <!-- end 1-2 comment -->
-                            <?php } ?>
+                            <?php }?>
 
                         </ul>
                     </div> <!-- end comments -->
 
                     <!-- Comment Form -->
-                <?php if(\System\Auth\Auth::checkLogin()) { ?>
+                    <?php if (\System\Auth\Auth::checkLogin()) {?>
                     <div id="respond" class="comment-respond">
                         <div class="title-wrap">
                             <h5 class="comment-respond__title section-title">دیدگاه شما</h5>
@@ -221,11 +252,11 @@
 
                         </form>
                     </div>
-                <?php } else{ ?>
+                    <?php } else {?>
                     <div class="title-wrap">
-                            <h5 class="comment-respond__title section-title">برای درج دیدگاه وارد شوید</h5>
-                    </div> 
-                <?php } ?>
+                        <h5 class="comment-respond__title section-title">برای درج دیدگاه وارد شوید</h5>
+                    </div>
+                    <?php }?>
                     <!-- end comment form -->
 
                 </div> <!-- end content box -->
@@ -238,20 +269,21 @@
                 <aside class="widget widget-popular-posts">
                     <h4 class="widget-title">محبوب ترین مقالات</h4>
                     <ul class="post-list-small">
-                        <?php foreach ($mostPopularPost as $post) { ?>
+                        <?php foreach ($mostPopularPost as $post) {?>
                         <li class="post-list-small__item">
                             <article class="post-list-small__entry clearfix">
                                 <div class="post-list-small__img-holder">
                                     <div class="thumb-container thumb-100">
                                         <a href="<?= route('home.post', [$post->id]) ?>">
-                                            <img data-src="<?=asset($post->image)?>" src="<?=asset($post->image)?>" alt=""
-                                                class="post-list-small__img--rounded lazyload">
+                                            <img data-src="<?= asset($post->image) ?>" src="<?= asset($post->image) ?>"
+                                                alt="" class="post-list-small__img--rounded lazyload">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="post-list-small__body">
                                     <h3 class="post-list-small__entry-title">
-                                        <a href="<?= route('home.post', [$post->id]) ?>"><?=str_limit($post->title,60)?></a>
+                                        <a
+                                            href="<?= route('home.post', [$post->id]) ?>"><?= str_limit($post->title, 60) ?></a>
                                     </h3>
                                     <ul class="entry__meta">
                                         <li class="entry__meta-author">
@@ -265,7 +297,7 @@
                                 </div>
                             </article>
                         </li>
-                        <?php } ?>
+                        <?php }?>
                     </ul>
                 </aside> <!-- end widget popular posts -->
 
@@ -291,7 +323,7 @@
                 <!-- Widget Ad 300 -->
                 <aside class="widget widget_media_image">
                     <a href="#">
-                        <img src="<?=asset('img/content/mag-1.jpg')?>" alt="">
+                        <img src="<?= asset('img/content/mag-1.jpg') ?>" alt="">
                     </a>
                 </aside> <!-- end widget ad 300 -->
 
@@ -302,4 +334,25 @@
         </div> <!-- end content -->
     </div> <!-- end main container -->
 
+@endsection
+
+@section('script')
+    <script>
+        var swiper = new Swiper(".swiper", {
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    </script>
 @endsection
