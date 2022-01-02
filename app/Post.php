@@ -53,4 +53,8 @@ class Post extends Model
         return $this->belongsTo('\App\User', 'user_id', 'id');
     }
 
+    public function galleries()
+    {
+        return $this->hasMany('\App\Gallery', 'post_id', 'id');
+    }
 }

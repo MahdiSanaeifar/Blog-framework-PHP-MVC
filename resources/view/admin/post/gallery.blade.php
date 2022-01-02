@@ -43,12 +43,12 @@
                                         </form>
                                         <div class="col-md-12 mt-4 pt-4">
                                             <div class="row">
-                                                <?php foreach($galleries as $gallery){ ?>
+                                                <?php foreach($galleries as $gallery){?>
                                                     <div class="col-md-3 text-center">
                                                         <div>
                                                             <img style="width: 100%;" src="<?= asset($gallery->image) ?>" alt="">
                                                         </div>
-                                                        <a class="btn btn-danger mt-1" href="<?= route('admin.ads.delete.gallery.image', [$gallery->id]) ?>">حذف</a>
+                                                        <a class="btn btn-danger mt-1" href="<?= route('admin.post.delete.gallery.image', [$gallery->id]) ?>">حذف</a>
                                                     </div>
                                                     <?php } ?>
                                             </div>
