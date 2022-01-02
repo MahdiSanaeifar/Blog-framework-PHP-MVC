@@ -71,7 +71,6 @@
                 <div class="col-lg-6">
                     <ul class="top-menu">
                         <li><a href="<?=route('home.about')?>">درباره ما</a></li>
-                        <li><a href="#">تبلیغات</a></li>
                         <li><a href="<?=route('home.contact')?>">تماس با ما</a></li>
 
                         <?php if (\System\Auth\Auth::checkLogin()) {?>
@@ -164,18 +163,6 @@
                             <li class="<?=isActive(route('home.category', [7]), true)?>">
                                 <a href="<?=route('home.category', [7])?>">خودرو</a>
                             </li>
-
-                            <!-- <li class="nav__dropdown">
-                                <a href="#">صفحات</a>
-                                <ul class="nav__dropdown-menu">
-                                    <li><a href="#">درباره ما</a></li>
-                                    <li><a href="#">تماس با ما</a></li>
-                                    <li><a href="search-results.html">نتایج جستجو</a></li>
-                                    <li><a href="categories.html">دسته بندی مطالب</a></li>
-                                    <li><a href="single-post.html">نمایش مطلب</a></li>
-                                    <li><a href="404.html">404</a></li>
-                                </ul>
-                            </li> -->
 
 
                         </ul> <!-- end menu -->
