@@ -1,5 +1,0 @@
-php -S localhost:8000 -t project
-
-
-
-********   "project" is your project folder name. *********
