@@ -29,6 +29,7 @@ Route::get('/category/{id}', 'HomeController@category', 'home.category');
 Route::post('/post/comment/{id}', 'HomeController@comment', 'home.post.comment');
 Route::post('/subscriber', 'HomeController@subscriber', 'home.subscriber');
 Route::get('/search', 'HomeController@search', 'home.search');
+Route::post('/contact', 'HomeController@sendMessage', 'home.contact.message');
 
 // Home Ajax routes
 Route::get('/ajax-last-posts', 'HomeController@ajaxLastPosts', 'home.last.posts');

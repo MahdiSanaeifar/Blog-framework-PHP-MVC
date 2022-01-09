@@ -37,26 +37,25 @@
                     </ul>
 
                     <!-- Contact Form -->
-                    <form id="contact-form" class="contact-form mt-30 mb-30" method="post" action="#">
-                        <div class="contact-name">
+                    <form id="contact-form" class="contact-form mt-30 mb-30 row" method="POST" action="<?=route('home.contact.message')?>">
+                        <div class="contact-name col-4">
                             <label for="name">نام <abbr title="required" class="required">*</abbr></label>
                             <input name="name" id="name" type="text">
                         </div>
-                        <div class="contact-email">
+                        <div class="contact-email col-4">
                             <label for="email">ایمیل <abbr title="required" class="required">*</abbr></label>
                             <input name="email" id="email" type="email">
                         </div>
-                        <div class="contact-subject">
+                        <div class="contact-subject col-4">
                             <label for="email">موضوع</label>
                             <input name="subject" id="subject" type="text">
                         </div>
-                        <div class="contact-message">
+                        <div class="contact-message col-12">
                             <label for="message">پیام <abbr title="required" class="required">*</abbr></label>
                             <textarea id="message" name="message" rows="7" required="required"></textarea>
                         </div>
 
-                        <input type="submit" class="btn btn-lg btn-color btn-button" value="فرستادن" id="submit-message">
-                        <div id="msg" class="message"></div>
+                        <button type="submit" class="btn btn-lg btn-color btn-button">فرستادن</button>
                     </form>
 
                 </div>
