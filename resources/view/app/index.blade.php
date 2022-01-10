@@ -687,7 +687,7 @@
                 <section class="section">
                     <div class="title-wrap title-wrap--line">
                         <h3 class="section-title">اخبار تاپ کالا</h3>
-                        <a href="#" class="all-posts-url">نمایش همه</a>
+                        <a href="<?=route('home.all.post')?>" class="all-posts-url">نمایش همه</a>
                     </div>
                     <?php foreach ($recentPosts as $post) {?>
                     <article class="entry card post-list">
