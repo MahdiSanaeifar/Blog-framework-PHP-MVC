@@ -112,3 +112,7 @@ Route::delete('admin/subscriber/delete/{id}', 'Admin\SubscriberController@destro
 //widget
 Route::get('/admin/widget', 'Admin\WidgetController@index', 'admin.widget.index');
 Route::put('/admin/widget/update', 'Admin\WidgetController@update', 'admin.widget.update');
+
+//widget
+Route::get('/admin/contact', 'Admin\ContactController@index', 'admin.contact.index');
+Route::get('/admin/contact/edit/{id}', 'Admin\ContactController@edit', 'admin.contact.edit');

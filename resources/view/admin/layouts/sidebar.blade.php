@@ -30,6 +30,8 @@
 
                 <li class=" nav-item <?= isActive(route("admin.subscriber.index")) ?>"><a href="<?= route("admin.subscriber.index") ?>"><i class="fa fa-user-plus"></i>دنبال کنندگان</a></li>
 
+                <li class=" nav-item <?= isActive(route("admin.contact.index")) ?>"><a href="<?= route("admin.contact.index") ?>"><i class="fa fa-envelope"></i>پیام ها</a></li>
+
                 <li class=" nav-item <?= isActive(route("admin.widget.index")) ?>"><a href="<?= route("admin.widget.index") ?>"><i class="fa fa-list-alt"></i>ویجت ها</a></li>
 
             </ul>
