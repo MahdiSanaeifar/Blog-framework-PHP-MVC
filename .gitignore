@@ -2,3 +2,5 @@ system/
 .DS_Store
 new_mvc (2).sql
 run-localhost.txt
+resources/view/admin/.DS_Store
+resources/view/admin/ads/.DS_Store
