@@ -44,6 +44,7 @@ class UserController extends AdminController
             $inputs['avatar'] = ImageUpload::UploadAndFitImage($request->file('avatar'), $path, $name, 100, 100);
         }
         User::update($inputs);
+        flash('success','User updated successfully');
         return redirect('admin/user');
     }
 
@@ -59,6 +60,7 @@ class UserController extends AdminController
             $user->is_active = 0;
         }
         $user->save();
+        flash('success','User status updated successfully');
         return back();
     }
 
