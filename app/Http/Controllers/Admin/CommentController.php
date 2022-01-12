@@ -38,6 +38,7 @@ class CommentController extends AdminController
         } else {
             $comment = Comment::update(['id' => $id, 'approved' => 0]);
         }
+        flash('success','Comment status updated successfully');
         return back();
     }
 
@@ -55,6 +56,7 @@ class CommentController extends AdminController
         $inputs['approved'] = 1;
         $inputs['status'] = 1;
         Comment::create($inputs);
+        flash('success','Comment answer updated successfully');
         return redirect('admin/comment');
     }
 
