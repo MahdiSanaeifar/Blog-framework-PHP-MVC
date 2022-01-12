@@ -73,14 +73,6 @@ Route::get('/admin/post/delete-gallery-image/{gallery_id}', 'Admin\PostControlle
 // Route::post('/admin/ads/store-gallery-image/{id}', 'Admin\AdsController@storeGalleryImage', 'admin.ads.store.gallery.image');
 // Route::get('/admin/ads/delete-gallery-image/{gallery_id}', 'Admin\AdsController@deleteGalleryImage', 'admin.ads.delete.gallery.image');
 
-// Slideshow routes
-Route::get('/admin/slide', 'Admin\SlideController@index', 'admin.slide.index');
-Route::get('/admin/slide/create', 'Admin\SlideController@create', 'admin.slide.create');
-Route::post('/admin/slide/store', 'Admin\SlideController@store', 'admin.slide.store');
-Route::get('/admin/slide/edit/{id}', 'Admin\SlideController@edit', 'admin.slide.edit');
-Route::put('/admin/slide/update/{id}', 'Admin\SlideController@update', 'admin.slide.update');
-Route::delete('admin/slide/delete/{id}', 'Admin\SlideController@destroy', 'admin.slide.delete');
-
 // Comment routes
 Route::get('/admin/comment', 'Admin\CommentController@index', 'admin.comment.index');
 Route::get('/admin/comment/show/{id}', 'Admin\CommentController@show', 'admin.comment.show');
