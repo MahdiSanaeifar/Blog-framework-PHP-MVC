@@ -23,6 +23,7 @@ class SubscriberController extends AdminController
     public function destroy($id)
     {
         Subscriber::delete($id);
+        flash('success','Subscriber deleted successfully');
         return back();
     }
 }

@@ -15,7 +15,8 @@
     </div>
 
     <div class="content-body">
-        <!-- Zero configuration table -->
+    @include('admin.layouts.message')
+    <!-- Zero configuration table -->
         <section id="basic-datatable">
             <div class="row">
                 <div class="col-12">
