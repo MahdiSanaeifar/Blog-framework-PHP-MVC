@@ -13,6 +13,15 @@ function isActive($url, $contain = true)
 }
 
 /**
+ * return flash value
+ * @param $message
+ * @return string
+ */
+function getFlash( $message){
+    return allFlashes()[$message];
+}
+
+/**
  * Return error class name
  */
 function errorClass($name)
@@ -139,4 +148,9 @@ function str_limit($value, $limit = 100, $end = '...')
     $limit = $limit - mb_strlen($end); // Take into account $end string into the limit
     $valuelen = mb_strlen($value);
     return $limit < $valuelen ? mb_substr($value, 0, mb_strrpos($value, ' ', $limit - $valuelen)) . $end : $value;
+}
+
+function success()
+{
+
 }
