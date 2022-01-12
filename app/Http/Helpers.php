@@ -14,10 +14,10 @@ function isActive($url, $contain = true)
 
 /**
  * return flash value
- * @param $message
+ * @param string $message
  * @return string
  */
-function getFlash( $message){
+function getFlash($message){
     return allFlashes()[$message];
 }
 
