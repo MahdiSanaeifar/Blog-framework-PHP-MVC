@@ -3,7 +3,7 @@
 @section('head-tag')
     <title><?= $post->title ?></title>
 
-    <link rel="stylesheet" href="<?=asset('swiper/swiper-bundle.min.css')?>" />
+    <link rel="stylesheet" href="<?=asset('swiper/swiper-bundle.min.css')?>"/>
     <script src="<?=asset('swiper/swiper-bundle.min.js')?>"></script>
 @endsection
 
@@ -34,14 +34,14 @@
                 <div class="content-box">
 
                     <!-- flash message -->
-                    @include('app.layouts.message')
+                @include('app.layouts.message')
 
-                    <!-- standard post -->
+                <!-- standard post -->
                     <article class="entry mb-0">
 
                         <div class="single-post__entry-header entry__header">
                             <a href="<?= route('home.category', [$post->category()->id]) ?>"
-                                class="entry__meta-category entry__meta-category--label entry__meta-category--green"><?= $post->category()->name ?></a>
+                               class="entry__meta-category entry__meta-category--label entry__meta-category--green"><?= $post->category()->name ?></a>
                             <h1 class="single-post__entry-title">
                                 <?= $post->title ?>
                             </h1>
@@ -82,19 +82,19 @@
                                 <div class="sticky-col">
                                     <div class="socials socials--rounded socials--large">
                                         <a class="social social-facebook" href="#" title="facebook" target="_blank"
-                                            aria-label="facebook">
+                                           aria-label="facebook">
                                             <i class="ui-facebook"></i>
                                         </a>
                                         <a class="social social-twitter" href="#" title="twitter" target="_blank"
-                                            aria-label="twitter">
+                                           aria-label="twitter">
                                             <i class="ui-twitter"></i>
                                         </a>
                                         <a class="social social-google-plus" href="#" title="google" target="_blank"
-                                            aria-label="google">
+                                           aria-label="google">
                                             <i class="ui-google"></i>
                                         </a>
                                         <a class="social social-pinterest" href="#" title="pinterest" target="_blank"
-                                            aria-label="pinterest">
+                                           aria-label="pinterest">
                                             <i class="ui-pinterest"></i>
                                         </a>
                                     </div>
@@ -105,15 +105,15 @@
 
                                 <p><?= html_entity_decode($post->body) ?></p>
 
-                                <?php $galleries = $post->galleries()->get(); 
+                                <?php $galleries = $post->galleries()->get();
                                 if(!empty($galleries)){
                                 ?>
-                                
+
                                 <div class="swiper">
                                     <!-- Additional required wrapper -->
                                     <div class="swiper-wrapper">
                                         <!-- Slides -->
-                                        <?php foreach($galleries as $gallery) { ?> 
+                                        <?php foreach($galleries as $gallery) { ?>
                                         <img src="<?= asset($gallery->image) ?>" alt="" class="entry__img swiper-slide">
                                         <?php } ?>
                                     </div>
@@ -126,14 +126,15 @@
                                     <div class="swiper-button-next"></div>
                                 </div>
                                 <!-- Slider main container -->
-                                <?php } ?>
+                            <?php } ?>
 
-                                <!-- tags -->
+                            <!-- tags -->
                                 <div class="entry__tags">
                                     <i class="ui-tags"></i>
                                     <span class="entry__tags-label">برچسب ها:</span>
-                                    <a href="#" rel="tag">نمایشگاه MWC 2019</a>
-                                    <a href="#" rel="tag">هوآوی</a>
+                                    <?php foreach ($post->tags()->get() as $tag){ ?>
+                                    <a href="#" rel="tag"><?=$tag->title?></a>
+                                    <?php } ?>
                                 </div> <!-- end tags -->
 
                             </div> <!-- end entry article -->
@@ -142,14 +143,16 @@
                         <!-- Author -->
                         <div class="entry-author clearfix">
                             <img alt="" data-src="<?= asset($post->user()->avatar) ?>" src="img/empty.png"
-                                class="avatar lazyload">
+                                 class="avatar lazyload">
                             <div class="entry-author__info">
                                 <h6 class="entry-author__name">
                                     <a href="#"><?= $post->user()->username ?></a>
                                 </h6>
                                 <p class="mb-0">لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با
-                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-                                    لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای
+                                    استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+                                    که
+                                    لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود
+                                    ابزارهای
                                     کاربردی می باشد.</p>
                             </div>
 
@@ -166,12 +169,12 @@
                                 <?php foreach ($posts as $relatedPost) {?>
                                 <article class="entry thumb thumb--size-1">
                                     <div class="entry__img-holder thumb__img-holder"
-                                        style="background-image: url('<?= asset($relatedPost->image) ?>');">
+                                         style="background-image: url('<?= asset($relatedPost->image) ?>');">
                                         <div class="bottom-gradient"></div>
                                         <div class="thumb-text-holder">
                                             <h2 class="thumb-entry-title">
                                                 <a
-                                                    href="<?= route('home.post', [$relatedPost->id]) ?>"><?= $relatedPost->title ?></a>
+                                                        href="<?= route('home.post', [$relatedPost->id]) ?>"><?= $relatedPost->title ?></a>
                                             </h2>
                                         </div>
                                         <a href="<?= route('home.post', [$relatedPost->id]) ?>" class="thumb-url"></a>
@@ -200,16 +203,16 @@
                                         <h6 class="comment-author"><?= $comment->user()->username ?></h6>
                                         <div class="comment-metadata">
                                             <a href="#"
-                                                class="comment-date"><?= toPersianNum(formatDate($comment->created_at, '%A, %d %B %Y')) ?></a>
+                                               class="comment-date"><?= toPersianNum(formatDate($comment->created_at, '%A, %d %B %Y')) ?></a>
                                         </div>
                                         <p><?= $comment->comment ?></p>
                                         <!-- <a href="#" class="comment-reply">پاسخ</a> -->
                                     </div>
                                 </div>
                                 <?php
-$childComments = $comment->child()->get();
-    if (!empty($childComments)) {
-        ?>
+                                $childComments = $comment->child()->get();
+                                if (!empty($childComments)) {
+                                ?>
                                 <ul class="children">
                                     <?php foreach ($childComments as $childComment) {?>
                                     <li class="comment">
@@ -221,7 +224,7 @@ $childComments = $comment->child()->get();
                                                 <h6 class="comment-author"><?= $childComment->user()->username ?></h6>
                                                 <div class="comment-metadata">
                                                     <a href="#"
-                                                        class="comment-date"><?= toPersianNum(formatDate($childComment->created_at, '%A, %d %B %Y')) ?></a>
+                                                       class="comment-date"><?= toPersianNum(formatDate($childComment->created_at, '%A, %d %B %Y')) ?></a>
                                                 </div>
                                                 <p><?= $childComment->comment ?></p>
                                             </div>
@@ -250,7 +253,7 @@ $childComments = $comment->child()->get();
 
                             <p class="comment-form-submit">
                                 <input type="submit" class="btn btn-lg btn-color btn-button" value="ارسال دیدگاه"
-                                    id="submit-message">
+                                       id="submit-message">
                             </p>
 
                         </form>
@@ -259,8 +262,8 @@ $childComments = $comment->child()->get();
                     <div class="title-wrap">
                         <h5 class="comment-respond__title section-title">برای درج دیدگاه وارد شوید</h5>
                     </div>
-                    <?php }?>
-                    <!-- end comment form -->
+                <?php }?>
+                <!-- end comment form -->
 
                 </div> <!-- end content box -->
             </div> <!-- end post content -->
@@ -279,14 +282,14 @@ $childComments = $comment->child()->get();
                                     <div class="thumb-container thumb-100">
                                         <a href="<?= route('home.post', [$post->id]) ?>">
                                             <img data-src="<?= asset($post->image) ?>" src="<?= asset($post->image) ?>"
-                                                alt="" class="post-list-small__img--rounded lazyload">
+                                                 alt="" class="post-list-small__img--rounded lazyload">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="post-list-small__body">
                                     <h3 class="post-list-small__entry-title">
                                         <a
-                                            href="<?= route('home.post', [$post->id]) ?>"><?= str_limit($post->title, 60) ?></a>
+                                                href="<?= route('home.post', [$post->id]) ?>"><?= str_limit($post->title, 60) ?></a>
                                     </h3>
                                     <ul class="entry__meta">
                                         <li class="entry__meta-author">
@@ -329,7 +332,6 @@ $childComments = $comment->child()->get();
                         <img src="<?= asset('img/content/mag-1.jpg') ?>" alt="">
                     </a>
                 </aside> <!-- end widget ad 300 -->
-
 
 
             </aside> <!-- end sidebar -->
