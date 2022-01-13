@@ -61,6 +61,7 @@ class WidgetController extends AdminController
                 $values['id']++;
             }
         }
+        flash('success','Widget updated successfully');
         return redirect('admin/widget');
     }
 }
