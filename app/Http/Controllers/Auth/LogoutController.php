@@ -12,6 +12,7 @@ class LogoutController
     public function logout()
     {
         Auth::logout();
+        flash('success','You logged out successfully');
         return redirect($this->redirectTo);
     }
 }

@@ -32,6 +32,7 @@ class LoginController{
            }
            else
            {
+            flash('success','You logged in successfully');
             return redirect($this->redirectTo);
            }
        }

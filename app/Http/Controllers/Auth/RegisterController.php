@@ -42,7 +42,7 @@ class RegisterController{
        ';
        $mailService = new MailService();
        $mailService->send($inputs['email'], 'ایمیل فعال سازی', $message);
-
+       flash('success','You registered successfully, please active your email with activation code');
        return redirect($this->redirectTo);
     }
 

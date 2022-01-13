@@ -38,6 +38,9 @@
                                         </ul>
                                     </div>
                                 <?php } ?>
+
+                                @include('app.layouts.message')
+
                                 <div class="card-content">
                                     <div class="card-body pt-1">
                                         <form action="<?= route('auth.login') ?>" method="post">
