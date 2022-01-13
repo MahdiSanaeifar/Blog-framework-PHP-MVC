@@ -105,6 +105,14 @@ Route::delete('admin/subscriber/delete/{id}', 'Admin\SubscriberController@destro
 Route::get('/admin/widget', 'Admin\WidgetController@index', 'admin.widget.index');
 Route::put('/admin/widget/update', 'Admin\WidgetController@update', 'admin.widget.update');
 
-//widget
+//contact
 Route::get('/admin/contact', 'Admin\ContactController@index', 'admin.contact.index');
 Route::get('/admin/contact/edit/{id}', 'Admin\ContactController@edit', 'admin.contact.edit');
+
+// Tag routes
+Route::get('/admin/tag', 'Admin\TagController@index', 'admin.tag.index');
+Route::get('/admin/tag/create', 'Admin\TagController@create', 'admin.tag.create');
+Route::post('/admin/tag/store', 'Admin\TagController@store', 'admin.tag.store');
+Route::get('/admin/tag/edit/{id}', 'Admin\TagController@edit', 'admin.tag.edit');
+Route::put('/admin/tag/update/{id}', 'Admin\TagController@update', 'admin.tag.update');
+Route::delete('/admin/tag/delete/{id}', 'Admin\TagController@destroy', 'admin.tag.delete');

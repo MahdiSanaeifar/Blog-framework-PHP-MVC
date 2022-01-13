@@ -22,6 +22,8 @@
 
                 <li class=" nav-item <?= isActive(route('admin.category.index')) ?>"><a href="<?= route('admin.category.index') ?>"><i class="fa fa-list"></i>دسته بندی</a></li>
 
+                <li class=" nav-item <?= isActive(route('admin.tag.index')) ?>"><a href="<?= route('admin.tag.index') ?>"><i class="fa fa-tag"></i>تگ ها</a></li>
+
                 <li class=" nav-item <?= isActive(route('admin.post.index')) ?>"><a href="<?= route('admin.post.index') ?>"><i class="fa fa-newspaper-o"></i>اخبار</a></li>
 
                 <li class=" nav-item <?= isActive(route("admin.comment.index")) ?>"><a href="<?= route("admin.comment.index") ?>"><i class="fa fa-commenting"></i>نظرات</a></li>
