@@ -53,8 +53,27 @@ class Post extends Model
         return $this->belongsTo('\App\User', 'user_id', 'id');
     }
 
+    /**
+     * @return array
+     */
     public function galleries()
     {
         return $this->hasMany('\App\Gallery', 'post_id', 'id');
     }
+
+    /**
+     * @return array
+     */
+    public function tags()
+    {
+//        return $this->belongsToMany('\App\Tag', 'posts-tags', 'id','tag_id','id','post_id');
+        return $this->belongsToMany('App\Tag', 'posts-tags','id','post_id','tag_id','id');
+    }
 }
+
+
+//SELECT `c`.* FROM ( SELECT `b`.* FROM `{$table}` AS `a` JOIN `{$commonTable}` AS `b` on `a`.`{$localKey}` = `b`.`{$middleForeignKey}` WHERE  `a`.`{$localKey}` = ? ) AS `relation` JOIN ".$this->getTableName()." AS `c` ON `relation`.`{$middleRelation}` = `c`.`$foreignKey`
+//SELECT posts.* FROM ( SELECT category_post.* FROM categories JOIN category_post on categories.id = category_post.cat_id WHERE  categories.id = ? ) as relation JOIN posts on relation.post_id=posts.id
+//SELECT `c`.* FROM ( SELECT `b`.* FROM `posts` AS `a` JOIN `posts-tags` AS `b` on `a`.`id` = `b`.`post_id` WHERE `a`.`id` = ? ) AS `relation` JOIN `tags` AS `c` ON `relation`.`id` = `c`.`tag_id
+
+//SELECT `c`.* FROM ( SELECT `b`.* FROM `posts` AS `a` JOIN `posts-tags` AS `b` on `a`.`id` = `b`.`post_id` WHERE `a`.`id` = 1 ) AS `relation` JOIN `tags` AS `c` ON `relation`.`tag_id` = `c`.`id`
