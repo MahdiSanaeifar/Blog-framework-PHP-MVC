@@ -31,6 +31,11 @@
         </div>
     </div>
 
+    <!-- flash message -->
+    <div class="container">
+        @include('app.layouts.message')
+    </div>
+
     <!-- Featured Posts Grid -->
     <section class="featured-posts-grid">
         <div class="container">

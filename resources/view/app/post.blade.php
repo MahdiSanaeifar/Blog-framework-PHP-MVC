@@ -33,6 +33,9 @@
             <div class="col-lg-8 blog__content mb-72">
                 <div class="content-box">
 
+                    <!-- flash message -->
+                    @include('app.layouts.message')
+
                     <!-- standard post -->
                     <article class="entry mb-0">
 

@@ -19,6 +19,10 @@
     <div class="main-container container" id="main-container">
         <!-- post content -->
         <div class="blog__content mb-72">
+
+            <!-- flash message -->
+            @include('app.layouts.message')
+
             <h1 class="page-title">تماس با ما</h1>
 
             <!-- Google Map -->

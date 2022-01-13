@@ -88,6 +88,7 @@ class HomeController extends Controller
         $inputs['status'] = 0;
         $inputs['user_id'] = Auth::user()->id;
         $comment = Comment::create($inputs);
+        flash('success','Your comment sent successfully');
         return back();
     }
 
@@ -99,6 +100,7 @@ class HomeController extends Controller
             $inputs['user_id'] = Auth::user()->id;
         }
         $subscriber = Subscriber::create($inputs);
+        flash('success','Your subscribe request sent successfully');
         return back();
     }
 
@@ -119,6 +121,7 @@ class HomeController extends Controller
         $request = new ContactRequest();
         $inputs = $request->all();
         $contact = Contact::create($inputs);
+        flash('success','Your message sent successfully');
         return back();
     }
     

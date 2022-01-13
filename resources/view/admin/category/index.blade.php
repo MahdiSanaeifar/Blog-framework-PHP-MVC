@@ -10,6 +10,9 @@
 </div>
 
 <div class="content-body">
+
+    @include('admin.layouts.message')
+
     <!-- Zero configuration table -->
     <section id="basic-datatable">
         <div class="row">
