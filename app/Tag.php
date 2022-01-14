@@ -16,4 +16,12 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = ['title', 'status'];
+
+    /**
+     * @return array
+     */
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post', 'posts-tags','id','tag_id','post_id','id');
+    }
 }

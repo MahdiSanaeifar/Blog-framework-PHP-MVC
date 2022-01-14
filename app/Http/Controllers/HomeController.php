@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Comment;
+use App\Tag;
 use App\Widget1;
 use App\Widget2;
 use App\Category;
@@ -79,6 +80,16 @@ class HomeController extends Controller
         return view('app.category', compact('posts', 'category', 'postCount'));
     }
 
+    public function tag($id)
+    {
+        $tag = Tag::find($id);
+        if (!empty($tag)) {
+//            $posts = Post::where('cat_id', '=', $id)->where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->paginate(2);
+//            $postCount = count(Post::where('cat_id', '=', $id)->get());
+        }
+        return view('app.tag', compact('tag'));
+    }
+
     public function comment($post_id)
     {
         $request = new UserCommentRequest();
@@ -88,7 +99,7 @@ class HomeController extends Controller
         $inputs['status'] = 0;
         $inputs['user_id'] = Auth::user()->id;
         $comment = Comment::create($inputs);
-        flash('success','Your comment sent successfully');
+        flash('success', 'Your comment sent successfully');
         return back();
     }
 
@@ -100,7 +111,7 @@ class HomeController extends Controller
             $inputs['user_id'] = Auth::user()->id;
         }
         $subscriber = Subscriber::create($inputs);
-        flash('success','Your subscribe request sent successfully');
+        flash('success', 'Your subscribe request sent successfully');
         return back();
     }
 
@@ -121,13 +132,13 @@ class HomeController extends Controller
         $request = new ContactRequest();
         $inputs = $request->all();
         $contact = Contact::create($inputs);
-        flash('success','Your message sent successfully');
+        flash('success', 'Your message sent successfully');
         return back();
     }
-    
+
     // public function ajaxLastPosts()
     // {
-        // //get data
+    // //get data
     //     $posts = Post::where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->limit(0, 4)->get();
     //     foreach ($posts as $post) {
     //         $post->user = $post->user()->first_name . ' ' . $post->user()->last_name;
