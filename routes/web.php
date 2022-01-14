@@ -26,7 +26,7 @@ Route::get('/contact', 'HomeController@contact', 'home.contact');
 Route::get('/posts', 'HomeController@allPost', 'home.all.post');
 Route::get('/post/{id}', 'HomeController@post', 'home.post');
 Route::get('/category/{id}', 'HomeController@category', 'home.category');
-Route::get('/tag/{id}', 'HomeController@tag', 'home.tag');
+Route::get('/tag/{slug}', 'HomeController@tag', 'home.tag');
 Route::post('/post/comment/{id}', 'HomeController@comment', 'home.post.comment');
 Route::post('/subscriber', 'HomeController@subscriber', 'home.subscriber');
 Route::get('/search', 'HomeController@search', 'home.search');

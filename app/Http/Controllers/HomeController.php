@@ -80,13 +80,10 @@ class HomeController extends Controller
         return view('app.category', compact('posts', 'category', 'postCount'));
     }
 
-    public function tag($id)
+    public function tag($slug)
     {
-        $tag = Tag::find($id);
-        if (!empty($tag)) {
-//            $posts = Post::where('cat_id', '=', $id)->where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->paginate(2);
-//            $postCount = count(Post::where('cat_id', '=', $id)->get());
-        }
+        $tag = Tag::where('slug','=',urldecode($slug))->get();
+        $tag = $tag[0];
         return view('app.tag', compact('tag'));
     }
 

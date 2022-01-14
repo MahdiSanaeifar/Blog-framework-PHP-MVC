@@ -1,11 +1,10 @@
 @extends('app.layouts.app')
 
 @section('head-tag')
-    <title>دسته بندی | <?=$category->name?></title>
+    <title>تگ | <?=$tag->title?></title>
 @endsection
 
 @section('content')
-
     <!-- Breadcrumbs -->
     <div class="container">
         <ul class="breadcrumbs">

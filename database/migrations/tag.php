@@ -4,6 +4,7 @@ return [
     "CREATE TABLE `tags` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(200) COLLATE utf8_persian_ci NOT NULL,
+  `slug` varchar(300) COLLATE utf8_persian_ci NOT NULL,
   `status` enum('1','0') COLLATE utf8_persian_ci NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,
