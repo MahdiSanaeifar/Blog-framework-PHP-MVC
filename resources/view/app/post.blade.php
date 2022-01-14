@@ -133,7 +133,7 @@
                                     <i class="ui-tags"></i>
                                     <span class="entry__tags-label">برچسب ها:</span>
                                     <?php foreach ($post->tags()->get() as $tag){ ?>
-                                    <a href="#" rel="tag"><?=$tag->title?></a>
+                                    <a href="<?=route('home.tag',[$tag->id])?>" rel="tag"><?=$tag->title?></a>
                                     <?php } ?>
                                 </div> <!-- end tags -->
 
@@ -173,8 +173,7 @@
                                         <div class="bottom-gradient"></div>
                                         <div class="thumb-text-holder">
                                             <h2 class="thumb-entry-title">
-                                                <a
-                                                        href="<?= route('home.post', [$relatedPost->id]) ?>"><?= $relatedPost->title ?></a>
+                                                <a href="<?= route('home.post', [$relatedPost->id]) ?>"><?= $relatedPost->title ?></a>
                                             </h2>
                                         </div>
                                         <a href="<?= route('home.post', [$relatedPost->id]) ?>" class="thumb-url"></a>
