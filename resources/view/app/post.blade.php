@@ -133,7 +133,7 @@
                                     <i class="ui-tags"></i>
                                     <span class="entry__tags-label">برچسب ها:</span>
                                     <?php foreach ($post->tags()->get() as $tag){ ?>
-                                    <a href="<?=route('home.tag',[$tag->id])?>" rel="tag"><?=$tag->title?></a>
+                                    <a href="<?=route('home.tag',[$tag->slug])?>" rel="tag"><?=$tag->title?></a>
                                     <?php } ?>
                                 </div> <!-- end tags -->
 
