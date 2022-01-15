@@ -70,6 +70,14 @@
                                             <?= errorText('image') ?>
                                         </fieldset>
                                     </div>
+                                    <div class="col-md-6">
+                                        <fieldset class="form-group">
+                                            <label for="tags">تگ</label>
+                                            <input value="<?= empty(old('tags')) ? '' : old('tags') ?>" name="tags"
+                                                   type="text" id="tags" class="form-control <?= errorClass('tags') ?>">
+                                            <?= errorText('tags') ?>
+                                        </fieldset>
+                                    </div>
                                     <div class="col-md-12">
                                         <section class="form-group">
                                             <label for="body">متن</label>

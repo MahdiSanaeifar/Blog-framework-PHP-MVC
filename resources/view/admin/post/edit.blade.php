@@ -53,7 +53,7 @@
                                             <?= errorText('summary') ?>
                                         </fieldset>
                                     </div>
-                                    
+
                                     <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <div class="form-group">
@@ -68,12 +68,26 @@
                                             </fieldset>
                                     </div>
 
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <fieldset class="form-group">
                                             <label for="image">تصویر</label>
                                             <input name="image" type="file" id="image" class="form-control-file <?= errorClass('image') ?>">
                                             <img src="<?= asset($post->image) ?>" alt="" width="200" height="150" class="mt-4">
                                             <?= errorText('image') ?>
+                                        </fieldset>
+                                    </div>
+
+                                    <?php
+                                        $tags = ($post->tags()->get());
+                                        foreach ($tags as $tag){
+                                            $postTag .= $tag->title . ",";
+                                        }
+                                    ?>
+                                    <div class="col-md-6">
+                                        <fieldset class="form-group">
+                                            <label for="tags">تگ ها</label>
+                                            <input value="<?= oldOrValue('tags', $postTag) ?>" name="tags" type="text" id="tags" class="form-control <?= errorClass('tags') ?>">
+                                            <?= errorText('tags') ?>
                                         </fieldset>
                                     </div>
 
