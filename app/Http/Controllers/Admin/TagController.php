@@ -32,6 +32,7 @@ class TagController extends AdminController
     {
         $request = new TagRequest();
         $inputs = $request->all();
+        $inputs['slug'] = slug($inputs['title']);
         Tag::create($inputs);
         flash('success','tag created successfully');
         return redirect('admin/tag');
@@ -54,6 +55,7 @@ class TagController extends AdminController
     {
         $request = new TagRequest();
         $inputs = $request->all();
+        $inputs['slug'] = slug($inputs['title']);
         Tag::update(array_merge($inputs, ['id' => $id]));
         flash('success','tag updated successfully');
         return redirect('admin/tag');
