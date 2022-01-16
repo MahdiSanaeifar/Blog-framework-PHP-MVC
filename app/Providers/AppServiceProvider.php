@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Category;
 use App\Post;
+use App\Tag;
 use System\View\Composer;
 
 class AppServiceProvider extends Provider
@@ -14,11 +14,13 @@ class AppServiceProvider extends Provider
 
     public function boot()
     {
-        Composer::view(['app.category', 'app.tag', 'app.post', 'app.search', 'app.all-post'], function () {
+        Composer::view(['app.category', 'app.tag', 'app.post', 'app.contact', 'app.about', 'app.search', 'app.all-post'], function () {
             // $categories = Category::whereNull('parent_id')->orderBy('created_at', 'desc')->limit(0, 6)->get();
             $mostPopularPost = Post::where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('views', 'desc')->limit(0, 4)->get();
+            $recentTag = Tag::limit(0, 6)->get(['slug', 'title']);
             return [
-                "mostPopularPost" => $mostPopularPost
+                "mostPopularPost" => $mostPopularPost,
+                "recentTag" => $recentTag
             ];
         });
     }

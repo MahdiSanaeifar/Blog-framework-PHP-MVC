@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Post;
+use App\Tag;
 use App\Widget1;
 use App\Widget2;
 use App\Widget3;
@@ -19,6 +20,8 @@ class WidgetProvider extends Provider
         Composer::view('app.index', function () {
             //sidebar posts
             $mostPopularPost = Post::where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('views', 'desc')->limit(0, 4)->get();
+            //footer tags
+            $recentTag = Tag::limit(0, 6)->get(['slug', 'title']);
             //widget1
             $widget1 = Widget1::all();
             //widget2
@@ -38,6 +41,7 @@ class WidgetProvider extends Provider
                 "widget2" => $widget2,
                 "widget3" => $widget3,
                 "mostPopularPost" => $mostPopularPost,
+                "recentTag" => $recentTag,
                 "w_2_1" => $w_2_1,
                 "w_2_2" => $w_2_2,
                 "w_2_3" => $w_2_3,
