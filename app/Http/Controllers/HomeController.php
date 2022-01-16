@@ -38,17 +38,6 @@ class HomeController extends Controller
         return view('app.contact');
     }
 
-    // public function ads($id)
-    // {
-    //     $advertise = Ads::find($id);
-    //     $galleries = $advertise->galleries()->get();
-    //     $posts = Post::where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->limit(0, 4)->get();
-    //     $relatedAds = Ads::where('cat_id', $advertise->cat_id)->where('id', '!=', $id)->orderBy('created_at', 'desc')->limit(0, 2)->get();
-    //     $categories = Category::all();
-    //     return view('app.ads', compact('posts', 'galleries', 'advertise', 'relatedAds', 'categories'));
-
-    // }
-
     public function allPost()
     {
         $posts = Post::where('published_at', '<=', date('Y-m-d H:i:s'))->orderBy('created_at', 'desc')->paginate(6);
