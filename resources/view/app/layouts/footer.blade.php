@@ -8,8 +8,8 @@
                     <aside class="widget widget-logo">
                         <a href="index.html">
                             <img src="<?=asset('img/logo_default_white.png')?>"
-                                srcset="<?=asset('img/logo_default_white.png')?> 1x, <?=asset('img/logo_default_white@2x.png')?> 2x"
-                                class="logo__img" alt="">
+                                 srcset="<?=asset('img/logo_default_white.png')?> 1x, <?=asset('img/logo_default_white@2x.png')?> 2x"
+                                 class="logo__img" alt="">
                         </a>
                         <p class="copyright">
 
@@ -19,15 +19,15 @@
                         </p>
                         <div class="socials socials--large socials--rounded mb-24">
                             <a href="#" class="social social-facebook" aria-label="facebook"><i
-                                    class="ui-facebook"></i></a>
+                                        class="ui-facebook"></i></a>
                             <a href="#" class="social social-twitter" aria-label="twitter"><i
-                                    class="ui-twitter"></i></a>
+                                        class="ui-twitter"></i></a>
                             <a href="#" class="social social-google-plus" aria-label="google+"><i
-                                    class="ui-google"></i></a>
+                                        class="ui-google"></i></a>
                             <a href="#" class="social social-youtube" aria-label="youtube"><i
-                                    class="ui-youtube"></i></a>
+                                        class="ui-youtube"></i></a>
                             <a href="#" class="social social-instagram" aria-label="instagram"><i
-                                    class="ui-instagram"></i></a>
+                                        class="ui-instagram"></i></a>
                         </div>
                     </aside>
                 </div>
@@ -36,12 +36,9 @@
                     <aside class="widget widget_nav_menu">
                         <h4 class="widget-title">هشتگ های داغ</h4>
                         <ul>
-                            <li><a href="about.html">#تکنولوزی</a></li>
-                            <li><a href="contact.html">#موبایل</a></li>
-                            <li><a href="categories.html">#کتاب</a></li>
-                            <li><a href="shortcodes.html">#هنر</a></li>
-                            <li><a href="shortcodes.html">#زیبایی</a></li>
-                            <li><a href="shortcodes.html">#دیجیتال</a></li>
+                            <?php foreach ($recentTag as $tag){ ?>
+                            <li><a href="<?=route('home.tag', [$tag->slug])?>">#<?=$tag->title?></a></li>
+                            <?php } ?>
                         </ul>
                     </aside>
                 </div>
@@ -70,7 +67,6 @@
         </div>
     </div> <!-- end container -->
 </footer> <!-- end footer -->
-
 
 
 <div id="back-to-top">
