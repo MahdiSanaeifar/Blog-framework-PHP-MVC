@@ -117,3 +117,8 @@ Route::post('/admin/tag/store', 'Admin\TagController@store', 'admin.tag.store');
 Route::get('/admin/tag/edit/{id}', 'Admin\TagController@edit', 'admin.tag.edit');
 Route::put('/admin/tag/update/{id}', 'Admin\TagController@update', 'admin.tag.update');
 Route::delete('/admin/tag/delete/{id}', 'Admin\TagController@destroy', 'admin.tag.delete');
+
+//system
+Route::get('/admin/system', 'Admin\SystemController@index', 'admin.system.index');
+Route::get('/admin/system/edit', 'Admin\SystemController@edit', 'admin.system.edit');
+Route::put('/admin/system/update', 'Admin\SystemController@update', 'admin.system.update');
