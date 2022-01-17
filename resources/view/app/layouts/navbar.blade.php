@@ -129,7 +129,7 @@
 
                     <!-- Logo -->
                     <a href="<?=route('home.index')?>" class="logo">
-                        <img class="logo__img" src="<?=asset('img/logo_default.png')?>" alt="logo">
+                        <img class="logo__img" src="<?=asset('images/logo.png')?>" alt="logo">
                     </a>
 
                     <!-- Nav-wrap -->

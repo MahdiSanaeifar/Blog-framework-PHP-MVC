@@ -432,7 +432,7 @@
                 <!-- Widget Ad 300 -->
                 <aside class="widget widget_media_image">
                     <a href="#">
-                        <img src="img/content/mag-1.jpg" alt="">
+                        <img src="<?=asset('images/sidebar-image.png')?>" alt="">
                     </a>
                 </aside> <!-- end widget ad 300 -->
 
@@ -443,7 +443,7 @@
         <!-- Ad Banner 728 -->
         <div class="text-center pb-48">
             <a href="#">
-                <img src="img/content/cinema-banner.jpg" alt="">
+                <img src="<?=asset('images/center-page-image.png')?>" alt="">
             </a>
         </div>
 

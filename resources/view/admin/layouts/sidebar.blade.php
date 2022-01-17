@@ -36,6 +36,8 @@
 
                 <li class=" nav-item <?= isActive(route("admin.widget.index")) ?>"><a href="<?= route("admin.widget.index") ?>"><i class="fa fa-list-alt"></i>ویجت ها</a></li>
 
+                <li class=" nav-item <?= isActive(route("admin.system.index")) ?>"><a href="<?= route("admin.system.index") ?>"><i class="fa fa-server"></i>تنظیمات</a></li>
+
             </ul>
         </div>
     </div>

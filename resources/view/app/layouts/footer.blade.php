@@ -6,9 +6,9 @@
 
                 <div class="col-lg-5 col-md-6">
                     <aside class="widget widget-logo">
-                        <a href="index.html">
-                            <img src="<?=asset('img/logo_default_white.png')?>"
-                                 srcset="<?=asset('img/logo_default_white.png')?> 1x, <?=asset('img/logo_default_white@2x.png')?> 2x"
+                        <a href="<?=route('home.index')?>">
+                            <img src="<?=asset('images/logo.png')?>"
+                                 srcset="<?=asset('images/logo.png')?> 1x, <?=asset('img/logo_default_white@2x.png')?> 2x"
                                  class="logo__img" alt="">
                         </a>
                         <p class="copyright">
