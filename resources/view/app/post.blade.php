@@ -81,19 +81,19 @@
                             <div class="entry__share">
                                 <div class="sticky-col">
                                     <div class="socials socials--rounded socials--large">
-                                        <a class="social social-facebook" href="#" title="facebook" target="_blank"
+                                        <a class="social social-facebook" href="<?= App\System::where('section','=','facebook')->get()[0]->content ?>" title="facebook" target="_blank"
                                            aria-label="facebook">
                                             <i class="ui-facebook"></i>
                                         </a>
-                                        <a class="social social-twitter" href="#" title="twitter" target="_blank"
+                                        <a class="social social-twitter" href="<?= App\System::where('section','=','twitter')->get()[0]->content ?>" title="twitter" target="_blank"
                                            aria-label="twitter">
                                             <i class="ui-twitter"></i>
                                         </a>
-                                        <a class="social social-google-plus" href="#" title="google" target="_blank"
+                                        <a class="social social-google-plus" href="<?= App\System::where('section','=','googleplus')->get()[0]->content ?>" title="google" target="_blank"
                                            aria-label="google">
                                             <i class="ui-google"></i>
                                         </a>
-                                        <a class="social social-pinterest" href="#" title="pinterest" target="_blank"
+                                        <a class="social social-pinterest" href="<?= App\System::where('section','=','pinterest')->get()[0]->content ?>" title="pinterest" target="_blank"
                                            aria-label="pinterest">
                                             <i class="ui-pinterest"></i>
                                         </a>
