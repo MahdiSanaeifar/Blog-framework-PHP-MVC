@@ -5,17 +5,13 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\Comment;
 use App\Tag;
-use App\Widget1;
-use App\Widget2;
 use App\Category;
 use App\Contact;
 use App\Http\Requests\ContactRequest;
 use App\Subscriber;
 use System\Auth\Auth;
-use App\Http\Services\MailService;
 use App\Http\Requests\SubscriberRequest;
 use App\Http\Requests\UserCommentRequest;
-use System\Database\DBBuilder\DBBuilder;
 
 class HomeController extends Controller
 {
