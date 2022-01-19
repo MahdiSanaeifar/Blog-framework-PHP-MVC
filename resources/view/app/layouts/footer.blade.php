@@ -18,15 +18,13 @@
 
                         </p>
                         <div class="socials socials--large socials--rounded mb-24">
-                            <a href="#" class="social social-facebook" aria-label="facebook"><i
+                            <a href="<?= App\System::where('section','=','facebook')->get()[0]->content ?>" class="social social-facebook" aria-label="facebook"><i
                                         class="ui-facebook"></i></a>
-                            <a href="#" class="social social-twitter" aria-label="twitter"><i
+                            <a href="<?= App\System::where('section','=','twitter')->get()[0]->content ?>" class="social social-twitter" aria-label="twitter"><i
                                         class="ui-twitter"></i></a>
-                            <a href="#" class="social social-google-plus" aria-label="google+"><i
+                            <a href="<?= App\System::where('section','=','googleplus')->get()[0]->content ?>" class="social social-google-plus" aria-label="google+"><i
                                         class="ui-google"></i></a>
-                            <a href="#" class="social social-youtube" aria-label="youtube"><i
-                                        class="ui-youtube"></i></a>
-                            <a href="#" class="social social-instagram" aria-label="instagram"><i
+                            <a href="<?= App\System::where('section','=','instagram')->get()[0]->content ?>" class="social social-instagram" aria-label="instagram"><i
                                         class="ui-instagram"></i></a>
                         </div>
                     </aside>
