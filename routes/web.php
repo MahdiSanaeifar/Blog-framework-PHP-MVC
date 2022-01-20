@@ -122,3 +122,11 @@ Route::delete('/admin/tag/delete/{id}', 'Admin\TagController@destroy', 'admin.ta
 Route::get('/admin/system', 'Admin\SystemController@index', 'admin.system.index');
 Route::get('/admin/system/edit', 'Admin\SystemController@edit', 'admin.system.edit');
 Route::put('/admin/system/update', 'Admin\SystemController@update', 'admin.system.update');
+
+// Menu routes
+Route::get('/admin/menu', 'Admin\MenuController@index', 'admin.menu.index');
+Route::get('/admin/menu/create', 'Admin\MenuController@create', 'admin.menu.create');
+Route::post('/admin/menu/store', 'Admin\MenuController@store', 'admin.menu.store');
+Route::get('/admin/menu/edit/{id}', 'Admin\MenuController@edit', 'admin.menu.edit');
+Route::put('/admin/menu/update/{id}', 'Admin\MenuController@update', 'admin.menu.update');
+Route::delete('/admin/menu/delete/{id}', 'Admin\MenuController@destroy', 'admin.menu.delete');
