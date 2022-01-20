@@ -24,11 +24,11 @@
                     <button class="sidenav__menu-toggle" aria-haspopup="true" aria-label="Open dropdown"><i
                                 class="ui-arrow-down"></i></button>
                     <ul class="sidenav__menu-dropdown">
-                        <li><a href="<?=route('home.category', [2])?>" class="sidenav__menu-url">بین الملل</a></li>
-                        <li><a href="<?=route('home.category', [3])?>" class="sidenav__menu-url">ورزشی</a></li>
-                        <li><a href="<?=route('home.category', [4])?>" class="sidenav__menu-url">سیاسی</a></li>
-                        <li><a href="<?=route('home.category', [6])?>" class="sidenav__menu-url">فناوری</a></li>
-                        <li><a href="<?=route('home.category', [7])?>" class="sidenav__menu-url">خودرو</a></li>
+                        <?php foreach (\App\Menu::all() as $menu) {?>
+                        <li>
+                            <a href="<?=$menu->url?>" class="sidenav__menu-url"><?=$menu->title?></a>
+                        </li>
+                        <?php }?>
                     </ul>
                 </li>
 
@@ -57,22 +57,22 @@
 
         <div class="socials sidenav__socials">
             <a class="social social-facebook"
-               href="<?= App\System::where('section', '=', 'facebook')->get()[0]->content ?>" target="_blank"
+               href="<?=App\System::where('section', '=', 'facebook')->get()[0]->content?>" target="_blank"
                aria-label="facebook">
                 <i class="ui-facebook"></i>
             </a>
             <a class="social social-twitter"
-               href="<?= App\System::where('section', '=', 'twitter')->get()[0]->content ?>" target="_blank"
+               href="<?=App\System::where('section', '=', 'twitter')->get()[0]->content?>" target="_blank"
                aria-label="twitter">
                 <i class="ui-twitter"></i>
             </a>
             <a class="social social-google-plus"
-               href="<?= App\System::where('section', '=', 'googleplus')->get()[0]->content ?>" target="_blank"
+               href="<?=App\System::where('section', '=', 'googleplus')->get()[0]->content?>" target="_blank"
                aria-label="google">
                 <i class="ui-google"></i>
             </a>
             <a class="social social-instagram"
-               href="<?= App\System::where('section', '=', 'instagram')->get()[0]->content ?>" target="_blank"
+               href="<?=App\System::where('section', '=', 'instagram')->get()[0]->content?>" target="_blank"
                aria-label="instagram">
                 <i class="ui-instagram"></i>
             </a>
@@ -108,22 +108,22 @@
                 <div class="col-lg-6">
                     <div class="socials nav__socials socials--nobase socials--white justify-content-start">
                         <a class="social social-facebook"
-                           href="<?= App\System::where('section', '=', 'facebook')->get()[0]->content ?>"
+                           href="<?=App\System::where('section', '=', 'facebook')->get()[0]->content?>"
                            target="_blank" aria-label="facebook">
                             <i class="ui-facebook"></i>
                         </a>
                         <a class="social social-twitter"
-                           href="<?= App\System::where('section', '=', 'twitter')->get()[0]->content ?>" target="_blank"
+                           href="<?=App\System::where('section', '=', 'twitter')->get()[0]->content?>" target="_blank"
                            aria-label="twitter">
                             <i class="ui-twitter"></i>
                         </a>
                         <a class="social social-google-plus"
-                           href="<?= App\System::where('section', '=', 'googleplus')->get()[0]->content ?>"
+                           href="<?=App\System::where('section', '=', 'googleplus')->get()[0]->content?>"
                            target="_blank" aria-label="google">
                             <i class="ui-google"></i>
                         </a>
                         <a class="social social-instagram"
-                           href="<?= App\System::where('section', '=', 'instagram')->get()[0]->content ?>"
+                           href="<?=App\System::where('section', '=', 'instagram')->get()[0]->content?>"
                            target="_blank" aria-label="instagram">
                             <i class="ui-instagram"></i>
                         </a>
@@ -166,26 +166,11 @@
                                 <a href="<?=route('home.all.post')?>">تمامی اخبار</a>
                             </li>
 
-                            <li class="<?=isActive(route('home.category', [2]), true)?>">
-                                <a href="<?=route('home.category', [2])?>">بین الملل</a>
+                            <?php foreach (\App\Menu::all() as $menu) {?>
+                            <li class="<?=isActive($menu->url, true)?>">
+                                <a href="<?=$menu->url?>"><?=$menu->title?></a>
                             </li>
-
-                            <li class="<?=isActive(route('home.category', [3]), true)?>">
-                                <a href="<?=route('home.category', [3])?>">ورزشی</a>
-                            </li>
-
-                            <li class="<?=isActive(route('home.category', [4]), true)?>">
-                                <a href="<?=route('home.category', [4])?>">سیاسی</a>
-                            </li>
-
-                            <li class="<?=isActive(route('home.category', [6]), true)?>">
-                                <a href="<?=route('home.category', [6])?>">فناوری</a>
-                            </li>
-
-                            <li class="<?=isActive(route('home.category', [7]), true)?>">
-                                <a href="<?=route('home.category', [7])?>">خودرو</a>
-                            </li>
-
+                            <?php }?>
 
                         </ul> <!-- end menu -->
                     </nav> <!-- end nav-wrap -->
